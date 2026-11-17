@@ -177,7 +177,7 @@
   }
   function post(p){
     var body = JSON.stringify(p);
-    var run = function(){ return fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body, keepalive: true, redirect: "follow" }).then(function(r){ return r.json(); }); };
+    var run = function(){ return fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body, keepalive: true, redirect: "follow", credentials: "omit" }).then(function(r){ return r.json(); }); };
     var job = queue.then(run, run);
     queue = job.catch(function(){});
     return job;
@@ -186,8 +186,9 @@
   function save(step){ lastStep = Math.max(lastStep, step); post(payload(step)).catch(function(){}); }
   // If the person leaves before the queued saves finish, send the latest answers once more on the way out.
   function flushOnLeave(){
-    if (finished || !lastStep || !navigator.sendBeacon) return;
-    try { navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(payload(lastStep))], { type: "text/plain;charset=utf-8" })); } catch (e) {}
+    if (finished || !lastStep) return;
+    // keepalive fetch, not sendBeacon: a beacon carries the visitor's Google cookies and Apps Script then never runs doPost.
+    try { fetch(ENDPOINT, { method: "POST", mode: "no-cors", keepalive: true, credentials: "omit", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload(lastStep)) }); } catch (e) {}
   }
   window.addEventListener("pagehide", flushOnLeave);
   document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flushOnLeave(); });
