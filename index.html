@@ -182,7 +182,15 @@
     queue = job.catch(function(){});
     return job;
   }
-  function save(step){ post(payload(step)).catch(function(){}); }
+  var lastStep = 0, finished = false;
+  function save(step){ lastStep = Math.max(lastStep, step); post(payload(step)).catch(function(){}); }
+  // If the person leaves before the queued saves finish, send the latest answers once more on the way out.
+  function flushOnLeave(){
+    if (finished || !lastStep || !navigator.sendBeacon) return;
+    try { navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(payload(lastStep))], { type: "text/plain;charset=utf-8" })); } catch (e) {}
+  }
+  window.addEventListener("pagehide", flushOnLeave);
+  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flushOnLeave(); });
 
   function flow(){
     var f = ["comment", "score", "improve"];
@@ -215,6 +223,7 @@
     if (btn) btn.disabled = true;
     post(p).then(function(r){
       if (!r || !r.ok) throw new Error("save");
+      finished = true;
       sessionStorage.removeItem(KEY);
       if (A.call === true) $("mcfThanksLine").textContent = "Bilal will reach out soon. We read every answer.";
       show("thanks", true);
