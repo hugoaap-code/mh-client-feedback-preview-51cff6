@@ -153,7 +153,7 @@
   var qs = new URLSearchParams(location.search);
   var TEST = FORCE_TEST || qs.get("test") === "1";
   var CLIENT = /^[A-Za-z0-9]{6,40}$/.test(qs.get("c") || "") ? qs.get("c") : "";
-  var WAVE = /^\d{4}-Q[1-4]$/.test(qs.get("w") || "") ? qs.get("w") : "";
+  var WAVE = /^\d{4}-Q[1-4]$/.test(qs.get("wave") || "") ? qs.get("wave") : "";
   var root = document.getElementById("mcf");
   var $ = function(id){ return document.getElementById(id); };
   var KEY = "mcf_id";
