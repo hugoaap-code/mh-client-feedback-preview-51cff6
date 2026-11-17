@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>PREVIEW · Client feedback · Mehanna Advisors</title>
+<style>html,body{margin:0;background:#fff}.pv{position:sticky;top:0;z-index:9;background:#ffe14d;color:#000;font:700 13px/1.3 Arial,sans-serif;padding:8px 14px;text-align:center}</style>
+</head><body>
+<div class="pv">PREVIEW · test mode: answers go to the Test tab only</div>
+<!-- mh-client-feedback:start (source: ~/Work/Mehanna/Client-Feedback/page/client-feedback.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&display=swap" rel="stylesheet">
+<style>
+.mcf{--ink:#000;--paper:#fff;--g1:#f2f2f2;--g2:#d9d9d9;--g3:#6b6b6b;font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.5;color:var(--ink);background:var(--paper);max-width:640px;margin:0 auto;padding:clamp(28px,6vw,64px) 20px 64px;box-sizing:border-box;min-height:100vh}
+.mcf *,.mcf *::before,.mcf *::after{box-sizing:border-box}
+.mcf h1,.mcf h2,.mcf p{margin:0;padding:0;color:inherit;font-family:inherit}
+.mcf button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;white-space:normal;text-transform:none;letter-spacing:normal;box-shadow:none;border-radius:0;line-height:inherit;margin:0;transition:none;-webkit-tap-highlight-color:transparent}
+.mcf button:focus-visible,.mcf input:focus-visible,.mcf textarea:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.mcf .logo{display:block;font-weight:900;font-size:15px;letter-spacing:-.01em;margin-bottom:clamp(28px,5vw,44px)}
+.mcf .logo span{color:var(--g3);font-weight:700}
+.mcf .top{display:flex;align-items:center;gap:14px;margin-bottom:22px;min-height:22px}
+.mcf .back{font-size:14px;font-weight:700;color:var(--g3);padding:0;visibility:hidden}
+.mcf .back.on{visibility:visible}
+.mcf .back:hover{color:var(--ink);background:none}
+.mcf .prog{flex:1;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--g3)}
+.mcf .bar{flex:1;height:3px;background:var(--g1);position:relative}
+.mcf .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);width:0;transition:width .25s}
+.mcf h1:focus,.mcf h2:focus{outline:none}
+.mcf .scr{display:none}
+.mcf .scr.on{display:block;animation:mcfIn .2s ease}
+@keyframes mcfIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.mcf h1,.mcf h2.q{font-weight:900;font-size:clamp(34px,8vw,52px);line-height:.98;letter-spacing:-.035em;font-variation-settings:"wdth" 112}
+.mcf h2.q{font-size:clamp(28px,6.4vw,40px)}
+.mcf .line{margin-top:14px;font-size:18px;max-width:34ch}
+.mcf .sub{margin-top:6px;color:var(--g3);font-size:15px}
+.mcf .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.mcf .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--g1);border:1px solid var(--g2);font-size:14px;font-weight:700}
+.mcf .scale{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;margin-top:28px}
+.mcf .scale button{height:52px;border:2px solid var(--ink);font-weight:800;font-size:18px;background:var(--paper)}
+.mcf .scale button:hover{background:var(--g1)}
+.mcf .scale button.sel{background:var(--ink);color:var(--paper)}
+.mcf .ends{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--g3);font-weight:600}
+@media (max-width:520px){.mcf .scale{grid-template-columns:repeat(6,1fr)}.mcf .scale button{height:50px}.mcf .ends{display:none}.mcf .ends-m{display:flex}}
+.mcf .ends-m{display:none;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--g3);font-weight:600}
+.mcf .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.mcf .chip{padding:11px 16px;border:2px solid var(--g2);background:var(--paper);font-weight:700;font-size:16px;text-align:left}
+.mcf .chip:hover{border-color:var(--ink);background:var(--paper)}
+.mcf .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.mcf textarea.in,.mcf input.in{display:block;width:100%;padding:13px 14px;border:2px solid var(--ink);border-radius:0;font:inherit;font-size:16px;line-height:1.4;margin-top:20px;background:var(--paper);color:var(--ink);box-shadow:none;outline:none}
+.mcf textarea.in{min-height:130px;resize:vertical}
+.mcf label.fl{display:block;font-weight:700;font-size:14px;margin-top:18px}
+.mcf label.fl + .in{margin-top:6px}
+.mcf .chk{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:15px;cursor:pointer}
+.mcf .chk input{width:20px;height:20px;margin:2px 0 0;accent-color:#000;flex:none}
+.mcf .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;align-items:center}
+.mcf .btn{padding:15px 26px;background:var(--ink);color:var(--paper);font-weight:800;font-size:17px;border:2px solid var(--ink)}
+.mcf .btn:hover{background:#222;color:var(--paper)}
+.mcf .btn[disabled]{background:var(--g2);border-color:var(--g2);color:#fff;cursor:not-allowed}
+.mcf .btn.ghost{background:var(--paper);color:var(--ink)}
+.mcf .btn.ghost:hover{background:var(--g1);color:var(--ink)}
+.mcf .skip{font-weight:700;color:var(--g3);font-size:15px;padding:8px 4px}
+.mcf .skip:hover{color:var(--ink);background:none}
+.mcf .stack .btn{width:100%;text-align:left}
+.mcf .err{display:none;margin-top:14px;color:#b00020;font-weight:700;font-size:15px}
+.mcf .err.on{display:block}
+.mcf .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.mcf .fine{margin-top:40px;font-size:13px;color:var(--g3)}
+</style>
+
+<div class="mcf" id="mcf" data-clarity-mask="true">
+  <div class="logo">Mehanna Advisors <span>· Client feedback</span></div>
+  <div class="top">
+    <button type="button" class="back" id="mcfBack">&larr; Back</button>
+    <div class="prog" id="mcfProg" aria-live="polite"><span id="mcfN"></span><div class="bar"><i id="mcfBar"></i></div></div>
+  </div>
+
+  <!-- 1. Score -->
+  <section class="scr on" data-s="score">
+    <h1>How are we doing?</h1>
+    <p class="line">How likely are you to recommend Mehanna Advisors to a dentist friend?</p>
+    <div class="badges"><span class="badge">🔒 You can stay anonymous</span><span class="badge">⏱️ About 1 minute</span></div>
+    <div class="scale" id="mcfScale" role="group" aria-label="Score from 0 to 10"></div>
+    <div class="ends"><span>0 = Not likely</span><span>10 = Very likely</span></div>
+    <div class="ends-m"><span>0 = Not likely</span><span>10 = Very likely</span></div>
+  </section>
+
+  <!-- 2. Could do better -->
+  <section class="scr" data-s="improve">
+    <h2 class="q">What could we do better?</h2>
+    <p class="sub">Pick any that apply.</p>
+    <div class="chips" id="mcfChips"></div>
+    <input class="in" id="mcfOther" type="text" maxlength="300" placeholder="Tell us what" style="display:none">
+    <div class="acts"><button type="button" class="btn" id="mcfImpNext" disabled>Next</button></div>
+  </section>
+
+  <!-- 3. Comment -->
+  <section class="scr" data-s="comment">
+    <h2 class="q">How did we do this quarter?</h2>
+    <p class="sub">Optional. What went well, what didn't, in your own words.</p>
+    <textarea class="in" id="mcfComment" maxlength="3000" placeholder="Type here"></textarea>
+    <div class="acts"><button type="button" class="btn" id="mcfComNext">Next</button><button type="button" class="skip" id="mcfComSkip">Skip</button></div>
+  </section>
+
+  <!-- 4a. Testimonial (9-10) -->
+  <section class="scr" data-s="testimonial">
+    <h2 class="q">Would you say a few words for other dentists?</h2>
+    <p class="sub">Short is fine. What changed for you since working with us?</p>
+    <textarea class="in" id="mcfTesti" maxlength="3000" placeholder="Type here"></textarea>
+    <label class="fl" for="mcfTname">Name to show with it</label>
+    <input class="in" id="mcfTname" type="text" maxlength="120" placeholder="Dr. Jane Smith" autocomplete="name">
+    <label class="chk"><input type="checkbox" id="mcfPub" checked> <span>Mehanna Advisors can share this with my name.</span></label>
+    <div class="err" id="mcfTerr">Add the name you'd like us to show, or uncheck the box.</div>
+    <div class="acts"><button type="button" class="btn" id="mcfTNext">Send</button><button type="button" class="skip" id="mcfTSkip">Skip</button></div>
+  </section>
+
+  <!-- 4b. Call (0-6) -->
+  <section class="scr" data-s="call">
+    <h2 class="q">Want Bilal to give you a call?</h2>
+    <p class="sub">He'd like to hear what we can do better.</p>
+    <div id="mcfCallNoLink" style="display:none">
+      <label class="fl" for="mcfCname">Your name</label>
+      <input class="in" id="mcfCname" type="text" maxlength="120" autocomplete="name">
+      <label class="fl" for="mcfPhone">Best phone number</label>
+      <input class="in" id="mcfPhone" type="tel" maxlength="40" autocomplete="tel">
+      <div class="err" id="mcfCerr">Add your name and phone so Bilal can reach you.</div>
+    </div>
+    <div class="acts stack"><button type="button" class="btn" id="mcfCallYes">Yes, please</button><button type="button" class="btn ghost" id="mcfCallNo">No, thanks</button></div>
+  </section>
+
+  <!-- 5. Name or anonymous -->
+  <section class="scr" data-s="identity">
+    <h2 class="q">Keep your name on your answers?</h2>
+    <p class="sub">With your name, Bilal can follow up personally. Anonymous works too.</p>
+    <div class="acts stack"><button type="button" class="btn" id="mcfNamed">Yes, include my name</button><button type="button" class="btn ghost" id="mcfAnon">No, keep it anonymous</button></div>
+    <div class="err" id="mcfErr">Something went wrong saving your answers. Please try again.</div>
+  </section>
+
+  <!-- Thanks -->
+  <section class="scr" data-s="thanks">
+    <h2 class="q">Thank you.</h2>
+    <p class="line" id="mcfThanksLine">We read every answer. It helps us serve your practice better.</p>
+  </section>
+
+  <div class="hp" aria-hidden="true"><label>Website <input type="text" id="mcfHp" tabindex="-1" autocomplete="off"></label></div>
+  <p class="fine">Mehanna Advisors PLLC · Your answers go only to the Mehanna Advisors team.</p>
+</div>
+
+<script>
+(function(){
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbwJbLOIB9Cltm1yPwStamifE-eFAqLhQuG1ywjBV1OLqxM_Qn3j2RHzIdE_C6_GVmpZ/exec";
+  var FORCE_TEST = true;
+  var IMPROVE = ["Reply faster","Explain things more clearly","More proactive tax planning","Fewer surprises at tax time","Make sending documents easier","Check in more often","Nothing, keep it up","Other"];
+  var NOTHING = "Nothing, keep it up";
+
+  var qs = new URLSearchParams(location.search);
+  var TEST = FORCE_TEST || qs.get("test") === "1";
+  var CLIENT = /^[A-Za-z0-9]{6,40}$/.test(qs.get("c") || "") ? qs.get("c") : "";
+  var WAVE = /^\d{4}-Q[1-4]$/.test(qs.get("w") || "") ? qs.get("w") : "";
+  var root = document.getElementById("mcf");
+  var $ = function(id){ return document.getElementById(id); };
+  var KEY = "mcf_id";
+  var id = sessionStorage.getItem(KEY);
+  if (!id) { id = "r-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10); sessionStorage.setItem(KEY, id); }
+
+  var A = { score: null, improve: [], other: "", comments: "", testimonial: "", tname: "", publish: true, call: null, phone: "", cname: "" };
+  var hist = [];
+  var cur = "score";
+  var queue = Promise.resolve();
+
+  function payload(step, extra){
+    var p = { id: id, step: String(step), website: $("mcfHp").value, test: TEST ? 1 : 0, client: CLIENT, wave: WAVE };
+    if (A.score !== null) p.score = A.score;
+    if (hist.indexOf("improve") >= 0 || cur === "improve") { p.improve = A.improve; p.other = A.other; }
+    if (step >= 3) p.comments = A.comments;
+    if (A.score !== null && A.score >= 9 && step >= 4) { p.testimonial = A.testimonial; p.tname = A.tname; p.publish = A.publish ? "yes" : "no"; }
+    if (A.call !== null) { p.call = A.call ? "yes" : "no"; if (!CLIENT) { p.phone = A.phone; p.cname = A.cname; } }
+    for (var k in (extra || {})) p[k] = extra[k];
+    return p;
+  }
+  function post(p){
+    var body = JSON.stringify(p);
+    var run = function(){ return fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body, keepalive: true, redirect: "follow" }).then(function(r){ return r.json(); }); };
+    var job = queue.then(run, run);
+    queue = job.catch(function(){});
+    return job;
+  }
+  function save(step){ post(payload(step)).catch(function(){}); }
+
+  function flow(){
+    var f = ["score", "improve", "comment"];
+    if (A.score !== null && A.score >= 9) f.push("testimonial");
+    else if (A.score !== null && A.score <= 6) f.push("call");
+    if (needIdentity()) f.push("identity");
+    return f;
+  }
+  function needIdentity(){
+    if (!CLIENT) return false;
+    if (A.call === true) return false;
+    if (A.score !== null && A.score >= 9 && A.testimonial && A.publish) return false;
+    return true;
+  }
+  function show(name, push){
+    if (push && cur !== name) hist.push(cur);
+    cur = name;
+    root.querySelectorAll(".scr").forEach(function(s){ s.classList.toggle("on", s.getAttribute("data-s") === name); });
+    var f = flow(), i = f.indexOf(name);
+    if (name === "thanks") { $("mcfN").textContent = ""; $("mcfBar").style.width = "100%"; $("mcfBack").classList.remove("on"); }
+    else { var tot = A.score === null ? 4 : f.length; $("mcfN").textContent = (i + 1) + " of " + tot; $("mcfBar").style.width = Math.round(i / tot * 100) + "%"; $("mcfBack").classList.toggle("on", hist.length > 0); }
+    var h = root.querySelector('.scr.on h1, .scr.on h2');
+    if (h && name !== "score") { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+    window.scrollTo({ top: Math.max(0, root.getBoundingClientRect().top + window.scrollY - 10) });
+  }
+  function nextAfter(name){ var f = flow(); var i = f.indexOf(name); return i >= 0 && i < f.length - 1 ? f[i + 1] : null; }
+  function finish(extra, btn){
+    var p = payload(6, extra); p.done = 1;
+    var err = $("mcfErr"); err.classList.remove("on");
+    if (btn) btn.disabled = true;
+    post(p).then(function(r){
+      if (!r || !r.ok) throw new Error("save");
+      sessionStorage.removeItem(KEY);
+      if (A.call === true) $("mcfThanksLine").textContent = "Bilal will reach out soon. We read every answer.";
+      show("thanks", true);
+    }).catch(function(){
+      if (btn) btn.disabled = false;
+      var on = root.querySelector(".scr.on .err") || err; on.textContent = "Something went wrong saving your answers. Please try again."; on.classList.add("on");
+    });
+  }
+  function advance(from, step){
+    var n = nextAfter(from);
+    if (n) { save(step); show(n, true); }
+    else finish({}, null);
+  }
+
+  // 1. score
+  var scale = $("mcfScale");
+  for (var s = 0; s <= 10; s++) (function(v){
+    var b = document.createElement("button"); b.type = "button"; b.textContent = v; b.setAttribute("aria-label", "Score " + v);
+    b.addEventListener("click", function(){
+      A.score = v;
+      scale.querySelectorAll("button").forEach(function(x){ x.classList.toggle("sel", x === b); });
+      save(1);
+      setTimeout(function(){ show("improve", true); }, 250);
+    });
+    scale.appendChild(b);
+  })(s);
+
+  // 2. improve
+  var chips = $("mcfChips");
+  IMPROVE.forEach(function(lab){
+    var c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = lab; c.setAttribute("aria-pressed", "false");
+    c.addEventListener("click", function(){
+      var on = A.improve.indexOf(lab) < 0;
+      if (on && lab === NOTHING) A.improve = [];
+      if (on && lab !== NOTHING) A.improve = A.improve.filter(function(x){ return x !== NOTHING; });
+      if (on) A.improve.push(lab); else A.improve = A.improve.filter(function(x){ return x !== lab; });
+      chips.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed", A.improve.indexOf(x.textContent) >= 0 ? "true" : "false"); });
+      $("mcfOther").style.display = A.improve.indexOf("Other") >= 0 ? "block" : "none";
+      $("mcfImpNext").disabled = A.improve.length === 0;
+    });
+    chips.appendChild(c);
+  });
+  $("mcfImpNext").addEventListener("click", function(){ A.other = A.improve.indexOf("Other") >= 0 ? $("mcfOther").value.trim() : ""; advance("improve", 2); });
+
+  // 3. comment
+  $("mcfComNext").addEventListener("click", function(){ A.comments = $("mcfComment").value.trim(); advance("comment", 3); });
+  $("mcfComSkip").addEventListener("click", function(){ $("mcfComment").value = ""; A.comments = ""; advance("comment", 3); });
+
+  // 4a. testimonial
+  $("mcfTNext").addEventListener("click", function(){
+    A.testimonial = $("mcfTesti").value.trim(); A.tname = $("mcfTname").value.trim(); A.publish = $("mcfPub").checked;
+    $("mcfTerr").classList.remove("on");
+    if (A.testimonial && A.publish && !A.tname) { $("mcfTerr").textContent = "Add the name you'd like us to show, or uncheck the box."; $("mcfTerr").classList.add("on"); return; }
+    if (!A.testimonial) { A.publish = false; A.tname = ""; }
+    advance("testimonial", 4);
+  });
+  $("mcfTSkip").addEventListener("click", function(){ A.testimonial = ""; A.tname = ""; A.publish = false; $("mcfTesti").value = ""; advance("testimonial", 4); });
+
+  // 4b. call
+  if (!CLIENT) $("mcfCallNoLink").style.display = "block";
+  $("mcfCallYes").addEventListener("click", function(){
+    if (!CLIENT) {
+      A.cname = $("mcfCname").value.trim(); A.phone = $("mcfPhone").value.trim();
+      if (!A.cname || !A.phone) { $("mcfCerr").textContent = "Add your name and phone so Bilal can reach you."; $("mcfCerr").classList.add("on"); return; }
+    }
+    $("mcfCerr").classList.remove("on");
+    A.call = true; advance("call", 4);
+  });
+  $("mcfCallNo").addEventListener("click", function(){ A.call = false; A.phone = ""; A.cname = ""; advance("call", 4); });
+
+  // 5. identity
+  $("mcfNamed").addEventListener("click", function(){ finish({ identity: "named" }, this); });
+  $("mcfAnon").addEventListener("click", function(){ finish({ identity: "anonymous" }, this); });
+
+  // back
+  $("mcfBack").addEventListener("click", function(){ if (hist.length) show(hist.pop(), false); });
+
+  show("score", false);
+})();
+</script>
+<!-- mh-client-feedback:end -->
+
+</body></html>
