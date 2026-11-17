@@ -73,31 +73,30 @@
     <div class="prog" id="mcfProg" aria-live="polite"><span id="mcfN"></span><div class="bar"><i id="mcfBar"></i></div></div>
   </div>
 
-  <!-- 1. Score -->
-  <section class="scr on" data-s="score">
-    <h1>How are we doing?</h1>
-    <p class="line">How likely are you to recommend Mehanna Advisors to a dentist friend?</p>
+  <!-- 1. Comment (opens the survey) -->
+  <section class="scr on" data-s="comment">
+    <h1>How did we do this quarter?</h1>
+    <p class="line">In your own words: what went well, and what didn't?</p>
     <div class="badges"><span class="badge">🔒 You can stay anonymous</span><span class="badge">⏱️ About 1 minute</span></div>
+    <textarea class="in" id="mcfComment" maxlength="3000" placeholder="Type here (optional)"></textarea>
+    <div class="acts"><button type="button" class="btn" id="mcfComNext">Next</button><button type="button" class="skip" id="mcfComSkip">Skip</button></div>
+  </section>
+
+  <!-- 2. Score -->
+  <section class="scr" data-s="score">
+    <h2 class="q">How likely are you to recommend Mehanna Advisors to a dentist friend?</h2>
     <div class="scale" id="mcfScale" role="group" aria-label="Score from 0 to 10"></div>
     <div class="ends"><span>0 = Not likely</span><span>10 = Very likely</span></div>
     <div class="ends-m"><span>0 = Not likely</span><span>10 = Very likely</span></div>
   </section>
 
-  <!-- 2. Could do better -->
+  <!-- 3. Could do better -->
   <section class="scr" data-s="improve">
     <h2 class="q">What could we do better?</h2>
     <p class="sub">Pick any that apply.</p>
     <div class="chips" id="mcfChips"></div>
     <input class="in" id="mcfOther" type="text" maxlength="300" placeholder="Tell us what" style="display:none">
     <div class="acts"><button type="button" class="btn" id="mcfImpNext" disabled>Next</button></div>
-  </section>
-
-  <!-- 3. Comment -->
-  <section class="scr" data-s="comment">
-    <h2 class="q">How did we do this quarter?</h2>
-    <p class="sub">Optional. What went well, what didn't, in your own words.</p>
-    <textarea class="in" id="mcfComment" maxlength="3000" placeholder="Type here"></textarea>
-    <div class="acts"><button type="button" class="btn" id="mcfComNext">Next</button><button type="button" class="skip" id="mcfComSkip">Skip</button></div>
   </section>
 
   <!-- 4a. Testimonial (9-10) -->
@@ -170,7 +169,7 @@
     var p = { id: id, step: String(step), website: $("mcfHp").value, test: TEST ? 1 : 0, client: CLIENT, wave: WAVE };
     if (A.score !== null) p.score = A.score;
     if (hist.indexOf("improve") >= 0 || cur === "improve") { p.improve = A.improve; p.other = A.other; }
-    if (step >= 3) p.comments = A.comments;
+    p.comments = A.comments;
     if (A.score !== null && A.score >= 9 && step >= 4) { p.testimonial = A.testimonial; p.tname = A.tname; p.publish = A.publish ? "yes" : "no"; }
     if (A.call !== null) { p.call = A.call ? "yes" : "no"; if (!CLIENT) { p.phone = A.phone; p.cname = A.cname; } }
     for (var k in (extra || {})) p[k] = extra[k];
@@ -186,7 +185,7 @@
   function save(step){ post(payload(step)).catch(function(){}); }
 
   function flow(){
-    var f = ["score", "improve", "comment"];
+    var f = ["comment", "score", "improve"];
     if (A.score !== null && A.score >= 9) f.push("testimonial");
     else if (A.score !== null && A.score <= 6) f.push("call");
     if (needIdentity()) f.push("identity");
@@ -206,7 +205,7 @@
     if (name === "thanks") { $("mcfN").textContent = ""; $("mcfBar").style.width = "100%"; $("mcfBack").classList.remove("on"); }
     else { var tot = A.score === null ? 4 : f.length; $("mcfN").textContent = (i + 1) + " of " + tot; $("mcfBar").style.width = Math.round(i / tot * 100) + "%"; $("mcfBack").classList.toggle("on", hist.length > 0); }
     var h = root.querySelector('.scr.on h1, .scr.on h2');
-    if (h && name !== "score") { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+    if (h && name !== "comment") { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
     window.scrollTo({ top: Math.max(0, root.getBoundingClientRect().top + window.scrollY - 10) });
   }
   function nextAfter(name){ var f = flow(); var i = f.indexOf(name); return i >= 0 && i < f.length - 1 ? f[i + 1] : null; }
@@ -237,7 +236,7 @@
     b.addEventListener("click", function(){
       A.score = v;
       scale.querySelectorAll("button").forEach(function(x){ x.classList.toggle("sel", x === b); });
-      save(1);
+      save(2);
       setTimeout(function(){ show("improve", true); }, 250);
     });
     scale.appendChild(b);
@@ -258,11 +257,11 @@
     });
     chips.appendChild(c);
   });
-  $("mcfImpNext").addEventListener("click", function(){ A.other = A.improve.indexOf("Other") >= 0 ? $("mcfOther").value.trim() : ""; advance("improve", 2); });
+  $("mcfImpNext").addEventListener("click", function(){ A.other = A.improve.indexOf("Other") >= 0 ? $("mcfOther").value.trim() : ""; advance("improve", 3); });
 
   // 3. comment
-  $("mcfComNext").addEventListener("click", function(){ A.comments = $("mcfComment").value.trim(); advance("comment", 3); });
-  $("mcfComSkip").addEventListener("click", function(){ $("mcfComment").value = ""; A.comments = ""; advance("comment", 3); });
+  $("mcfComNext").addEventListener("click", function(){ A.comments = $("mcfComment").value.trim(); advance("comment", 1); });
+  $("mcfComSkip").addEventListener("click", function(){ $("mcfComment").value = ""; A.comments = ""; advance("comment", 1); });
 
   // 4a. testimonial
   $("mcfTNext").addEventListener("click", function(){
@@ -293,7 +292,7 @@
   // back
   $("mcfBack").addEventListener("click", function(){ if (hist.length) show(hist.pop(), false); });
 
-  show("score", false);
+  show("comment", false);
 })();
 </script>
 <!-- mh-client-feedback:end -->
